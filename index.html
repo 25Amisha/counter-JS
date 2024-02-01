@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex; 
+      align-items: center;
+      justify-content: center; 
+      height: 100vh; 
+      margin: 0;
+      background: rgb(34,193,195);
+      background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+      font-family: 'Arial', sans-serif;
+    }
+
+
+    .counter {
+      text-align: center;
+      color: #fff;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      max-width: 300px;
+      margin: 20px;
+      margin-left: 150px;
+      align-items: center;
+    }
+
+    #marquee-container {
+        margin: 30px 0; 
+        overflow: hidden;
+    }
+    #marquee-text {
+        font-size: 30px;
+        font-weight: bold;
+        color:indianred;
+        margin: 10px 0;
+    }
+
+    #count {
+      font-size: 3em;
+      margin: 10px 0;
+      transition: color 0.3s;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:active {
+      background-color: #3e8e41;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .bounce {
+      animation: bounce 1s infinite;
+    }
+    
+  
+</style>
+<title>Counter App</title>
+</head>
+<body>
+    <!-- <div id="marquee-container">
+        <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="6">Counter  Using  Javascript</marquee>
+    </div> -->
+<h1 style="color: rgb(50, 20, 220); font-size: 50px; text-align: center;">Counter  Using <br> Javascript</h1>
+    <div class="counter " >
+        <p id="count" class="bounce">0</p>
+        <button onclick="countUp()">Count Up</button>
+        <button onclick="countDown()">Count Down</button>
+        <button onclick="toggleCount()" >Pause</button>
+    </div>
+
+<script>
+    let countValue = 0;
+    let intervalId;
+    
+    function updateCount() {
+        document.getElementById('count').innerText = countValue;
+    }
+    
+    function countUp() {
+        countValue++;
+        updateCount();
+    }
+    
+    function countDown() {
+        if (countValue > 0) {
+            countValue--;
+            updateCount();
+        }
+    }
+    function toggleCount() {
+        if (intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+        } else {
+            intervalId = setInterval(countUp, 1000);
+        }
+    }
+</script>
+
+</body>
+</html>
